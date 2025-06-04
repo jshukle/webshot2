@@ -336,7 +336,27 @@ new_session_screenshot <- function(
         wait_ = FALSE
       )
     } else if (filetype == "pdf") {
-      s$screenshot_pdf(filename = file, wait_ = FALSE)
+      # s$screenshot_pdf(
+      #   filename = file,
+      #   wait_ = FALSE,
+      #   preferCSSPageSize = TRUE
+      #   )
+      (s$Page$printToPDF(
+        printBackground = TRUE,
+        paperWidth = 8.27,
+        paperHeight = 11.69,
+        scale = 1,
+        marginTop = 0,
+        marginBottom = 0,
+        marginLeft = 0,
+        marginRight = 0,
+        preferCSSPageSize = TRUE,
+        wait_ = FALSE
+      )
+      )$then(function(res) {
+        writeBin(base64enc::base64decode(res$data), file)
+        file
+      })
     }
   })$then(function(value) {
     if (!isTRUE(quiet)) message(url, " screenshot completed")
