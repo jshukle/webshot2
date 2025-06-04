@@ -341,7 +341,7 @@ new_session_screenshot <- function(
       #   wait_ = FALSE,
       #   preferCSSPageSize = TRUE
       #   )
-      (s$Page$printToPDF(
+      res <- s$Page$printToPDF(
         printBackground = TRUE,
         paperWidth = 8.27,
         paperHeight = 11.69,
@@ -351,12 +351,10 @@ new_session_screenshot <- function(
         marginLeft = 0,
         marginRight = 0,
         preferCSSPageSize = TRUE,
-        wait_ = FALSE
+        wait_ = TRUE
       )
-      )$then(function(res) {
-        writeBin(base64enc::base64decode(res$data), file)
-        file
-      })
+      writeBin(base64enc::base64decode(res$data), file)
+      file
     }
   })$then(function(value) {
     if (!isTRUE(quiet)) message(url, " screenshot completed")
