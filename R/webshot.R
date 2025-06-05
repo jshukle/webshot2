@@ -347,6 +347,7 @@ new_session_screenshot <- function(
         marginBottom = 0,
         marginLeft = 0,
         marginRight = 0,
+        scale = 1.1,
         preferCSSPageSize = TRUE,
         wait_ = TRUE
       )
