@@ -343,13 +343,6 @@ new_session_screenshot <- function(
       #   )
       res <- s$Page$printToPDF(
         printBackground = TRUE,
-        paperWidth = 8.27,
-        paperHeight = 11.69,
-        scale = 1,
-        marginTop = 0,
-        marginBottom = 0,
-        marginLeft = 0,
-        marginRight = 0,
         preferCSSPageSize = TRUE,
         wait_ = TRUE
       )
